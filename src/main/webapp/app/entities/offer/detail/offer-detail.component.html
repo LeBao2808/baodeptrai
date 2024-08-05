@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (offer()) {
+      <div>
+        <h2 data-cy="offerDetailsHeading"><span>Offer</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ offer()!.id }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ offer()!.date | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ offer()!.status }}</span>
+          </dd>
+          <dt><span>Code</span></dt>
+          <dd>
+            <span>{{ offer()!.code }}</span>
+          </dd>
+          <dt><span>Customer</span></dt>
+          <dd>
+            @if (offer()!.customer) {
+              <div>
+                <a [routerLink]="['/customer', offer()!.customer?.id, 'view']">{{ offer()!.customer?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>User</span></dt>
+          <dd>
+            <span>{{ offer()!.user?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/offer', offer()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

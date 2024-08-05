@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Product.
+    -->
+    <changeSet id="20240805132539-1" author="jhipster">
+        <createTable tableName="product">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1500">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="unit" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="weight" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="height" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="width" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="length" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="type" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbm" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="price" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="construction" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="master_packing_qty" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="master_nest_code" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="inner_qty" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="pack_size" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="nest_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="country_of_origin" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="vendor_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="number_of_set" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="price_fob" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="qty_40_hc" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="d_57_qty" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="labels" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="planning_notes" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fact_tag" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="packaging_length" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="packaging_height" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="packaging_width" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="set_id_product_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="parent_product_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="material_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240805132539-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/product.csv"
+                  separator=";"
+                  tableName="product"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="code" type="string"/>
+            <column name="unit" type="string"/>
+            <column name="description" type="string"/>
+            <column name="weight" type="numeric"/>
+            <column name="height" type="numeric"/>
+            <column name="width" type="numeric"/>
+            <column name="length" type="numeric"/>
+            <column name="image_url" type="string"/>
+            <column name="type" type="numeric"/>
+            <column name="color" type="string"/>
+            <column name="cbm" type="numeric"/>
+            <column name="price" type="numeric"/>
+            <column name="construction" type="numeric"/>
+            <column name="master_packing_qty" type="numeric"/>
+            <column name="master_nest_code" type="numeric"/>
+            <column name="inner_qty" type="numeric"/>
+            <column name="pack_size" type="numeric"/>
+            <column name="nest_code" type="string"/>
+            <column name="country_of_origin" type="string"/>
+            <column name="vendor_name" type="string"/>
+            <column name="number_of_set" type="numeric"/>
+            <column name="price_fob" type="numeric"/>
+            <column name="qty_40_hc" type="numeric"/>
+            <column name="d_57_qty" type="numeric"/>
+            <column name="category" type="string"/>
+            <column name="labels" type="string"/>
+            <column name="planning_notes" type="string"/>
+            <column name="fact_tag" type="string"/>
+            <column name="packaging_length" type="numeric"/>
+            <column name="packaging_height" type="numeric"/>
+            <column name="packaging_width" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

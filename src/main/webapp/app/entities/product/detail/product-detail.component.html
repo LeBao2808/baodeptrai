@@ -1,0 +1,182 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (product()) {
+      <div>
+        <h2 data-cy="productDetailsHeading"><span>Product</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ product()!.id }}</span>
+          </dd>
+          <dt><span>Name</span></dt>
+          <dd>
+            <span>{{ product()!.name }}</span>
+          </dd>
+          <dt><span>Code</span></dt>
+          <dd>
+            <span>{{ product()!.code }}</span>
+          </dd>
+          <dt><span>Unit</span></dt>
+          <dd>
+            <span>{{ product()!.unit }}</span>
+          </dd>
+          <dt><span>Description</span></dt>
+          <dd>
+            <span>{{ product()!.description }}</span>
+          </dd>
+          <dt><span>Weight</span></dt>
+          <dd>
+            <span>{{ product()!.weight }}</span>
+          </dd>
+          <dt><span>Height</span></dt>
+          <dd>
+            <span>{{ product()!.height }}</span>
+          </dd>
+          <dt><span>Width</span></dt>
+          <dd>
+            <span>{{ product()!.width }}</span>
+          </dd>
+          <dt><span>Length</span></dt>
+          <dd>
+            <span>{{ product()!.length }}</span>
+          </dd>
+          <dt><span>Image Url</span></dt>
+          <dd>
+            <span>{{ product()!.imageUrl }}</span>
+          </dd>
+          <dt><span>Type</span></dt>
+          <dd>
+            <span>{{ product()!.type }}</span>
+          </dd>
+          <dt><span>Color</span></dt>
+          <dd>
+            <span>{{ product()!.color }}</span>
+          </dd>
+          <dt><span>Cbm</span></dt>
+          <dd>
+            <span>{{ product()!.cbm }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ product()!.price }}</span>
+          </dd>
+          <dt><span>Construction</span></dt>
+          <dd>
+            <span>{{ product()!.construction }}</span>
+          </dd>
+          <dt><span>Master Packing Qty</span></dt>
+          <dd>
+            <span>{{ product()!.masterPackingQty }}</span>
+          </dd>
+          <dt><span>Master Nest Code</span></dt>
+          <dd>
+            <span>{{ product()!.masterNestCode }}</span>
+          </dd>
+          <dt><span>Inner Qty</span></dt>
+          <dd>
+            <span>{{ product()!.innerQty }}</span>
+          </dd>
+          <dt><span>Pack Size</span></dt>
+          <dd>
+            <span>{{ product()!.packSize }}</span>
+          </dd>
+          <dt><span>Nest Code</span></dt>
+          <dd>
+            <span>{{ product()!.nestCode }}</span>
+          </dd>
+          <dt><span>Country Of Origin</span></dt>
+          <dd>
+            <span>{{ product()!.countryOfOrigin }}</span>
+          </dd>
+          <dt><span>Vendor Name</span></dt>
+          <dd>
+            <span>{{ product()!.vendorName }}</span>
+          </dd>
+          <dt><span>Number Of Set</span></dt>
+          <dd>
+            <span>{{ product()!.numberOfSet }}</span>
+          </dd>
+          <dt><span>Price FOB</span></dt>
+          <dd>
+            <span>{{ product()!.priceFOB }}</span>
+          </dd>
+          <dt><span>Qty 40 HC</span></dt>
+          <dd>
+            <span>{{ product()!.qty40HC }}</span>
+          </dd>
+          <dt><span>D 57 Qty</span></dt>
+          <dd>
+            <span>{{ product()!.d57Qty }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            <span>{{ product()!.category }}</span>
+          </dd>
+          <dt><span>Labels</span></dt>
+          <dd>
+            <span>{{ product()!.labels }}</span>
+          </dd>
+          <dt><span>Planning Notes</span></dt>
+          <dd>
+            <span>{{ product()!.planningNotes }}</span>
+          </dd>
+          <dt><span>Fact Tag</span></dt>
+          <dd>
+            <span>{{ product()!.factTag }}</span>
+          </dd>
+          <dt><span>Packaging Length</span></dt>
+          <dd>
+            <span>{{ product()!.packagingLength }}</span>
+          </dd>
+          <dt><span>Packaging Height</span></dt>
+          <dd>
+            <span>{{ product()!.packagingHeight }}</span>
+          </dd>
+          <dt><span>Packaging Width</span></dt>
+          <dd>
+            <span>{{ product()!.packagingWidth }}</span>
+          </dd>
+          <dt><span>Set Id Product</span></dt>
+          <dd>
+            @if (product()!.setIdProduct) {
+              <div>
+                <a [routerLink]="['/product', product()!.setIdProduct?.id, 'view']">{{ product()!.setIdProduct?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Parent Product</span></dt>
+          <dd>
+            @if (product()!.parentProduct) {
+              <div>
+                <a [routerLink]="['/product', product()!.parentProduct?.id, 'view']">{{ product()!.parentProduct?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Material</span></dt>
+          <dd>
+            @if (product()!.material) {
+              <div>
+                <a [routerLink]="['/material', product()!.material?.id, 'view']">{{ product()!.material?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product', product()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

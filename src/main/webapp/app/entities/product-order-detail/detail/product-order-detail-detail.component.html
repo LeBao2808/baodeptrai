@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (productOrderDetail()) {
+      <div>
+        <h2 data-cy="productOrderDetailDetailsHeading"><span>Product Order Detail</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ productOrderDetail()!.id }}</span>
+          </dd>
+          <dt><span>Order Creation Date</span></dt>
+          <dd>
+            <span>{{ productOrderDetail()!.orderCreationDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Quantity</span></dt>
+          <dd>
+            <span>{{ productOrderDetail()!.quantity }}</span>
+          </dd>
+          <dt><span>Unit Price</span></dt>
+          <dd>
+            <span>{{ productOrderDetail()!.unitPrice }}</span>
+          </dd>
+          <dt><span>Order</span></dt>
+          <dd>
+            @if (productOrderDetail()!.order) {
+              <div>
+                <a [routerLink]="['/product-order', productOrderDetail()!.order?.id, 'view']">{{ productOrderDetail()!.order?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Product</span></dt>
+          <dd>
+            @if (productOrderDetail()!.product) {
+              <div>
+                <a [routerLink]="['/product', productOrderDetail()!.product?.id, 'view']">{{ productOrderDetail()!.product?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product-order-detail', productOrderDetail()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

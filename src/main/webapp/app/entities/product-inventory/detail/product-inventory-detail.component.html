@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (productInventory()) {
+      <div>
+        <h2 data-cy="productInventoryDetailsHeading"><span>Product Inventory</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ productInventory()!.id }}</span>
+          </dd>
+          <dt><span>Quantity On Hand</span></dt>
+          <dd>
+            <span>{{ productInventory()!.quantityOnHand }}</span>
+          </dd>
+          <dt><span>Inventory Month</span></dt>
+          <dd>
+            <span>{{ productInventory()!.inventoryMonth }}</span>
+          </dd>
+          <dt><span>Inventory Year</span></dt>
+          <dd>
+            <span>{{ productInventory()!.inventoryYear }}</span>
+          </dd>
+          <dt><span>Type</span></dt>
+          <dd>
+            <span>{{ productInventory()!.type }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ productInventory()!.price }}</span>
+          </dd>
+          <dt><span>Product</span></dt>
+          <dd>
+            @if (productInventory()!.product) {
+              <div>
+                <a [routerLink]="['/product', productInventory()!.product?.id, 'view']">{{ productInventory()!.product?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product-inventory', productInventory()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

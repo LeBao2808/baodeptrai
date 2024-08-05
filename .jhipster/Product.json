@@ -1,0 +1,162 @@
+{
+  "annotations": {
+    "changelogDate": "20240805132539"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "width",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "length",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cbm",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "construction",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "masterPackingQty",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "masterNestCode",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "innerQty",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "packSize",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nestCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryOfOrigin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vendorName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numberOfSet",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "priceFOB",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "qty40HC",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "d57Qty",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "labels",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "planningNotes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "factTag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "packagingLength",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "packagingHeight",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "packagingWidth",
+      "fieldType": "Float"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Product",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "relationshipName": "setIdProduct",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "relationshipName": "parentProduct",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "material",
+      "relationshipName": "material",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

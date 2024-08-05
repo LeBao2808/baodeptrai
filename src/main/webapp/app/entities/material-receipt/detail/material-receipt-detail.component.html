@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (materialReceipt()) {
+      <div>
+        <h2 data-cy="materialReceiptDetailsHeading"><span>Material Receipt</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.id }}</span>
+          </dd>
+          <dt><span>Creation Date</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.creationDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Payment Date</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.paymentDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Receipt Date</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.receiptDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.status }}</span>
+          </dd>
+          <dt><span>Code</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.code }}</span>
+          </dd>
+          <dt><span>Created By User</span></dt>
+          <dd>
+            <span>{{ materialReceipt()!.createdByUser?.id }}</span>
+          </dd>
+          <dt><span>Quantification Order</span></dt>
+          <dd>
+            @if (materialReceipt()!.quantificationOrder) {
+              <div>
+                <a [routerLink]="['/planning', materialReceipt()!.quantificationOrder?.id, 'view']">{{
+                  materialReceipt()!.quantificationOrder?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/material-receipt', materialReceipt()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

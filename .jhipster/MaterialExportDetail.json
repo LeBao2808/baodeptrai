@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240805132553"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exportPrice",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Float"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "MaterialExportDetail",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "materialExport",
+      "relationshipName": "materialExport",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "material",
+      "relationshipName": "material",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
