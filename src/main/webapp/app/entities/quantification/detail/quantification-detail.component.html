@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quantification()) {
+      <div>
+        <h2 data-cy="quantificationDetailsHeading"><span>Quantification</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ quantification()!.id }}</span>
+          </dd>
+          <dt><span>Quantity</span></dt>
+          <dd>
+            <span>{{ quantification()!.quantity }}</span>
+          </dd>
+          <dt><span>Product</span></dt>
+          <dd>
+            @if (quantification()!.product) {
+              <div>
+                <a [routerLink]="['/product', quantification()!.product?.id, 'view']">{{ quantification()!.product?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Material</span></dt>
+          <dd>
+            @if (quantification()!.material) {
+              <div>
+                <a [routerLink]="['/material', quantification()!.material?.id, 'view']">{{ quantification()!.material?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quantification', quantification()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

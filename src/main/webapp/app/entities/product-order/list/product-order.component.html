@@ -1,0 +1,192 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductOrderHeading">
+    <span>Product Orders</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-product-order"
+        [routerLink]="['/product-order/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span>Thêm mới một Product Order</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  @if (productOrders?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span>No Product Orders found</span>
+    </div>
+  }
+
+  @if (productOrders && productOrders.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span>ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="paymentMethod">
+              <div class="d-flex">
+                <span>Payment Method</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="note">
+              <div class="d-flex">
+                <span>Note</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span>Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="orderDate">
+              <div class="d-flex">
+                <span>Order Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="paymentDate">
+              <div class="d-flex">
+                <span>Payment Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="warehouseReleaseDate">
+              <div class="d-flex">
+                <span>Warehouse Release Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="code">
+              <div class="d-flex">
+                <span>Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quantificationOrder.id">
+              <div class="d-flex">
+                <span>Quantification Order</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="customer.id">
+              <div class="d-flex">
+                <span>Customer</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="createdByUser.id">
+              <div class="d-flex">
+                <span>Created By User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (productOrder of productOrders; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/product-order', productOrder.id, 'view']">{{ productOrder.id }}</a>
+              </td>
+              <td>{{ productOrder.paymentMethod }}</td>
+              <td>{{ productOrder.note }}</td>
+              <td>{{ productOrder.status }}</td>
+              <td>{{ productOrder.orderDate | formatMediumDatetime }}</td>
+              <td>{{ productOrder.paymentDate | formatMediumDatetime }}</td>
+              <td>{{ productOrder.warehouseReleaseDate | formatMediumDatetime }}</td>
+              <td>{{ productOrder.code }}</td>
+              <td>
+                @if (productOrder.quantificationOrder) {
+                  <div>
+                    <a [routerLink]="['/planning', productOrder.quantificationOrder.id, 'view']">{{
+                      productOrder.quantificationOrder.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (productOrder.customer) {
+                  <div>
+                    <a [routerLink]="['/customer', productOrder.customer.id, 'view']">{{ productOrder.customer.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ productOrder.createdByUser?.id }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/product-order', productOrder.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline">Xem</span>
+                  </a>
+
+                  <a [routerLink]="['/product-order', productOrder.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline">Sửa</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(productOrder)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline">Xóa</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (productOrders && productOrders.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20240805132554"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "quantityOnHand",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "inventoryMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inventoryYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "MaterialInventory",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "material",
+      "relationshipName": "material",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,322 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-product-heading" data-cy="ProductCreateUpdateHeading">Thêm mới hoặc cập nhật Product</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_unit">Unit</label>
+          <input type="text" class="form-control" name="unit" id="field_unit" data-cy="unit" formControlName="unit" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_weight">Weight</label>
+          <input type="number" class="form-control" name="weight" id="field_weight" data-cy="weight" formControlName="weight" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_height">Height</label>
+          <input type="number" class="form-control" name="height" id="field_height" data-cy="height" formControlName="height" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_width">Width</label>
+          <input type="number" class="form-control" name="width" id="field_width" data-cy="width" formControlName="width" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_length">Length</label>
+          <input type="number" class="form-control" name="length" id="field_length" data-cy="length" formControlName="length" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_imageUrl">Image Url</label>
+          <input type="text" class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_type">Type</label>
+          <input type="number" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_color">Color</label>
+          <input type="text" class="form-control" name="color" id="field_color" data-cy="color" formControlName="color" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cbm">Cbm</label>
+          <input type="number" class="form-control" name="cbm" id="field_cbm" data-cy="cbm" formControlName="cbm" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_construction">Construction</label>
+          <input
+            type="number"
+            class="form-control"
+            name="construction"
+            id="field_construction"
+            data-cy="construction"
+            formControlName="construction"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_masterPackingQty">Master Packing Qty</label>
+          <input
+            type="number"
+            class="form-control"
+            name="masterPackingQty"
+            id="field_masterPackingQty"
+            data-cy="masterPackingQty"
+            formControlName="masterPackingQty"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_masterNestCode">Master Nest Code</label>
+          <input
+            type="number"
+            class="form-control"
+            name="masterNestCode"
+            id="field_masterNestCode"
+            data-cy="masterNestCode"
+            formControlName="masterNestCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_innerQty">Inner Qty</label>
+          <input type="number" class="form-control" name="innerQty" id="field_innerQty" data-cy="innerQty" formControlName="innerQty" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_packSize">Pack Size</label>
+          <input type="number" class="form-control" name="packSize" id="field_packSize" data-cy="packSize" formControlName="packSize" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nestCode">Nest Code</label>
+          <input type="text" class="form-control" name="nestCode" id="field_nestCode" data-cy="nestCode" formControlName="nestCode" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_countryOfOrigin">Country Of Origin</label>
+          <input
+            type="text"
+            class="form-control"
+            name="countryOfOrigin"
+            id="field_countryOfOrigin"
+            data-cy="countryOfOrigin"
+            formControlName="countryOfOrigin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vendorName">Vendor Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vendorName"
+            id="field_vendorName"
+            data-cy="vendorName"
+            formControlName="vendorName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numberOfSet">Number Of Set</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfSet"
+            id="field_numberOfSet"
+            data-cy="numberOfSet"
+            formControlName="numberOfSet"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_priceFOB">Price FOB</label>
+          <input type="number" class="form-control" name="priceFOB" id="field_priceFOB" data-cy="priceFOB" formControlName="priceFOB" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_qty40HC">Qty 40 HC</label>
+          <input type="number" class="form-control" name="qty40HC" id="field_qty40HC" data-cy="qty40HC" formControlName="qty40HC" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_d57Qty">D 57 Qty</label>
+          <input type="number" class="form-control" name="d57Qty" id="field_d57Qty" data-cy="d57Qty" formControlName="d57Qty" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_category">Category</label>
+          <input type="text" class="form-control" name="category" id="field_category" data-cy="category" formControlName="category" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_labels">Labels</label>
+          <input type="text" class="form-control" name="labels" id="field_labels" data-cy="labels" formControlName="labels" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_planningNotes">Planning Notes</label>
+          <input
+            type="text"
+            class="form-control"
+            name="planningNotes"
+            id="field_planningNotes"
+            data-cy="planningNotes"
+            formControlName="planningNotes"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_factTag">Fact Tag</label>
+          <input type="text" class="form-control" name="factTag" id="field_factTag" data-cy="factTag" formControlName="factTag" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_packagingLength">Packaging Length</label>
+          <input
+            type="number"
+            class="form-control"
+            name="packagingLength"
+            id="field_packagingLength"
+            data-cy="packagingLength"
+            formControlName="packagingLength"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_packagingHeight">Packaging Height</label>
+          <input
+            type="number"
+            class="form-control"
+            name="packagingHeight"
+            id="field_packagingHeight"
+            data-cy="packagingHeight"
+            formControlName="packagingHeight"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_packagingWidth">Packaging Width</label>
+          <input
+            type="number"
+            class="form-control"
+            name="packagingWidth"
+            id="field_packagingWidth"
+            data-cy="packagingWidth"
+            formControlName="packagingWidth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_setIdProduct">Set Id Product</label>
+          <select
+            class="form-control"
+            id="field_setIdProduct"
+            data-cy="setIdProduct"
+            name="setIdProduct"
+            formControlName="setIdProduct"
+            [compareWith]="compareProduct"
+          >
+            <option [ngValue]="null"></option>
+            @for (productOption of productsSharedCollection; track $index) {
+              <option [ngValue]="productOption">{{ productOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_parentProduct">Parent Product</label>
+          <select
+            class="form-control"
+            id="field_parentProduct"
+            data-cy="parentProduct"
+            name="parentProduct"
+            formControlName="parentProduct"
+            [compareWith]="compareProduct"
+          >
+            <option [ngValue]="null"></option>
+            @for (productOption of productsSharedCollection; track $index) {
+              <option [ngValue]="productOption">{{ productOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_material">Material</label>
+          <select
+            class="form-control"
+            id="field_material"
+            data-cy="material"
+            name="material"
+            formControlName="material"
+            [compareWith]="compareMaterial"
+          >
+            <option [ngValue]="null"></option>
+            @for (materialOption of materialsSharedCollection; track $index) {
+              <option [ngValue]="materialOption">{{ materialOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Hủy</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Lưu</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity MaterialReceiptDetail.
+    -->
+    <changeSet id="20240805132551-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="material_id"
+                                 baseTableName="material_receipt_detail"
+                                 constraintName="fk_material_receipt_detail__material_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="material"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="receipt_id"
+                                 baseTableName="material_receipt_detail"
+                                 constraintName="fk_material_receipt_detail__receipt_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="material_receipt"
+                                 />
+    </changeSet>
+</databaseChangeLog>

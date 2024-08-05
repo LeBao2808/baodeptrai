@@ -1,0 +1,289 @@
+entity Config {
+    key String,
+    value String,
+}
+// san pham
+entity Product {
+    name String,
+    code String,
+    unit String,
+    description String,
+    weight Float,
+    height Float,
+    width Float,
+    length Float,
+    imageUrl String,
+    type Integer, // 0 single, 1 set, 2 sub set
+    color String,
+    cbm Float,
+    price Float,
+    construction Integer, // trạng thái thi công
+    masterPackingQty Integer,
+    masterNestCode Integer,
+    innerQty Integer,
+    packSize Integer,
+    nestCode String,
+    countryOfOrigin String
+    vendorName String ,
+    NumberOfSet Integer,
+    priceFOB Float,
+    qty40HC Integer,
+    d57Qty Integer
+    //    LPMonth Integer
+    category String,
+    labels String,
+    planningNotes String,
+    factTag String
+    packagingLength     Float ,
+    packagingHeight  Float,
+    packagingWidth  Float,
+}
+
+
+// dong goi
+//entity Packaging {
+//    length Float,
+//    height Float,
+//    width Float,
+//}
+
+
+//relationship OneToMany {
+//    Product to Packaging {codeSet},
+//    //    Product to Packaging {productCode}
+//}
+
+relationship ManyToOne {
+    //    Product {packingId} to Packaging,
+    //    Packaging {productCode} to Product,
+    Product {setIdProduct} to Product,
+    Product {parentProduct} to Product,
+    Product {material} to Material,
+    //    Product {productionSite} to ProductionSite,
+    ProductionSite {ProductId} to Product
+}
+
+// nha cung cap nguyen lieu
+entity Supplier {
+    name String,
+    address String,
+    phone String
+}
+
+// noi san xuat san pham
+entity ProductionSite {
+    name String,
+    address String,
+    phone String,
+
+}
+
+// nguyen lieu
+entity Material {
+    name String,
+    unit String,
+    code String,
+//    image String,
+    description String ,
+    imgUrl String
+}
+
+relationship ManyToOne {
+    //    Material{Supplier} to Supplier
+    Supplier{MaterialId} to Material
+}
+
+
+
+// dinh luong
+entity Quantification {
+    quantity Float
+}
+
+relationship ManyToOne {
+    Quantification {Product} to Product
+    Quantification {Material} to Material
+}
+// don dinh luong
+entity Planning {
+    orderCreationDate Instant,
+    status Integer,
+    code String
+}
+
+relationship ManyToOne {
+    Planning {Quantification} to Quantification
+}
+// khach hang
+entity Customer {
+    name String,
+    address String,
+    phone String,
+    email String,
+    type Long, // 1: Retail, 2: Wholesale
+}
+
+
+// don dat hang san pham
+entity ProductOrder {
+    paymentMethod String,
+    note String,
+    status Integer, // 0: not paid
+    orderDate Instant,
+    paymentDate Instant,
+    warehouseReleaseDate Instant,
+    code String,
+}
+
+relationship ManyToOne {
+    ProductOrder {QuantificationOrder} to Planning,
+    ProductOrder {Customer} to Customer,
+    ProductOrder {CreatedByUser} to User with builtInEntity
+}
+
+// chi tiet don dat hang san pham
+entity ProductOrderDetail {
+    orderCreationDate Instant,
+    quantity Integer,
+    unitPrice Float,
+}
+
+relationship ManyToOne {
+    ProductOrderDetail {Order} to ProductOrder,
+    ProductOrderDetail {Product} to Product
+}
+
+// Don chao hang
+entity Offer {
+    date Instant,
+    status Integer, // 1: Accepted, 2: Rejected, 3: Quantified, Quoted
+    code String
+}
+
+relationship ManyToOne {
+    Offer {Customer} to Customer,
+    Offer to User with builtInEntity,
+}
+
+// chi tiet don chao hang
+entity OfferDetail {
+    feedback String
+}
+
+relationship ManyToOne {
+    OfferDetail {Product} to Product,
+    OfferDetail {Offer} to Offer,
+    //    QuotationDetail {Customer} to Customer
+}
+
+// hoa don
+// don nhap nguyen lieu
+entity MaterialReceipt {
+    creationDate Instant,
+    paymentDate Instant,
+    receiptDate Instant,
+    status Integer,
+    code String
+}
+
+relationship ManyToOne {
+    MaterialReceipt {CreatedByUser} to User with builtInEntity,
+    MaterialReceipt {QuantificationOrder} to Planning
+}
+//chi tiet don nhap nguyen lieu
+entity MaterialReceiptDetail {
+    note String
+    importPrice BigDecimal
+    quantity Float
+}
+
+relationship ManyToOne {
+    MaterialReceiptDetail {Material} to Material,
+    MaterialReceiptDetail {receipt} to MaterialReceipt
+}
+
+// don xuat nguyen lieu
+entity MaterialExport {
+    creationDate Instant,
+    exportDate Instant,
+    status Integer,
+    code String
+}
+
+relationship ManyToOne {
+    //    MaterialIssue {Material} to Material,
+    MaterialExport {CreatedByUser} to User with builtInEntity,
+    MaterialExport {ProductionSite} to ProductionSite
+}
+
+// chi tiet don xuat nguyen lieu
+entity MaterialExportDetail {
+    note String
+    exportPrice BigDecimal
+    quantity Float
+}
+
+relationship ManyToOne {
+    MaterialExportDetail {MaterialExport} to MaterialExport,
+    MaterialExportDetail {Material} to Material
+}
+// Ton Kho Nguyen Lieu
+
+entity MaterialInventory {
+    quantityOnHand Float,
+    inventoryMonth Integer, // Đổi từ month thành inventoryMonth
+    inventoryYear Integer,
+    type Integer,
+    price BigDecimal
+}
+
+relationship ManyToOne {
+    MaterialInventory {Material} to Material
+}
+
+// don nhap kho san pham
+
+entity ProductReceipt {
+    creationDate Instant,
+    paymentDate Instant,
+    receiptDate Instant,
+    status Integer
+    code String
+}
+
+relationship ManyToOne {
+    //    ProductEntry {Product} to Product,
+    ProductReceipt {Created} to User with builtInEntity
+}
+
+// chi tiet don nhap kho san pham
+
+entity ProductReceiptDetail {
+    note String,
+    quantity Integer
+}
+
+relationship ManyToOne {
+    ProductReceiptDetail {Product} to Product,
+    ProductReceiptDetail {receipt} to ProductReceipt
+}
+
+// ton kho san pham
+
+entity ProductInventory {
+    quantityOnHand Float,
+    inventoryMonth Integer, // Đổi từ month thành inventoryMonth
+    inventoryYear Integer,
+    type Integer,
+    price BigDecimal
+}
+
+relationship ManyToOne {
+    ProductInventory {Product} to Product
+
+}
+
+use mapstruct, serviceImpl, pagination for *
+filter *
+
+

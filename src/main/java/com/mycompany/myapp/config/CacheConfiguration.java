@@ -41,6 +41,26 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.repository.UserRepository.USERS_BY_LOGIN_CACHE);
             createCache(cm, com.mycompany.myapp.repository.UserRepository.USERS_BY_EMAIL_CACHE);
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Config.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Product.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Supplier.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductionSite.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Material.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Quantification.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Planning.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Customer.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductOrder.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductOrderDetail.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Offer.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.OfferDetail.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MaterialReceipt.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MaterialReceiptDetail.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MaterialExport.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MaterialExportDetail.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MaterialInventory.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductReceipt.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductReceiptDetail.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ProductInventory.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

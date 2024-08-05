@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (materialInventory()) {
+      <div>
+        <h2 data-cy="materialInventoryDetailsHeading"><span>Material Inventory</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.id }}</span>
+          </dd>
+          <dt><span>Quantity On Hand</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.quantityOnHand }}</span>
+          </dd>
+          <dt><span>Inventory Month</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.inventoryMonth }}</span>
+          </dd>
+          <dt><span>Inventory Year</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.inventoryYear }}</span>
+          </dd>
+          <dt><span>Type</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.type }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ materialInventory()!.price }}</span>
+          </dd>
+          <dt><span>Material</span></dt>
+          <dd>
+            @if (materialInventory()!.material) {
+              <div>
+                <a [routerLink]="['/material', materialInventory()!.material?.id, 'view']">{{ materialInventory()!.material?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/material-inventory', materialInventory()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

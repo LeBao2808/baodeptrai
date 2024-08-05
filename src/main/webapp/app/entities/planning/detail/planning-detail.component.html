@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (planning()) {
+      <div>
+        <h2 data-cy="planningDetailsHeading"><span>Planning</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ planning()!.id }}</span>
+          </dd>
+          <dt><span>Order Creation Date</span></dt>
+          <dd>
+            <span>{{ planning()!.orderCreationDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ planning()!.status }}</span>
+          </dd>
+          <dt><span>Code</span></dt>
+          <dd>
+            <span>{{ planning()!.code }}</span>
+          </dd>
+          <dt><span>Quantification</span></dt>
+          <dd>
+            @if (planning()!.quantification) {
+              <div>
+                <a [routerLink]="['/quantification', planning()!.quantification?.id, 'view']">{{ planning()!.quantification?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Quay lại</span>
+        </button>
+
+        <button type="button" [routerLink]="['/planning', planning()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Sửa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

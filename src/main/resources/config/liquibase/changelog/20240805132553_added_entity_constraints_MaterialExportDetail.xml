@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity MaterialExportDetail.
+    -->
+    <changeSet id="20240805132553-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="material_export_id"
+                                 baseTableName="material_export_detail"
+                                 constraintName="fk_material_export_detail__material_export_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="material_export"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="material_id"
+                                 baseTableName="material_export_detail"
+                                 constraintName="fk_material_export_detail__material_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="material"
+                                 />
+    </changeSet>
+</databaseChangeLog>
